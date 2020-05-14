@@ -17,14 +17,13 @@ public class Solution1 {
         }
         for (int i = 0; i < n1 - n2 + 1; i++) {
             if (haystack.charAt(i) == needle.charAt(0)) {
-                boolean flag = true;
-                for (int j = 1; j < n2; j++) {
+                int j = 1;
+                for (; j < n2; j++) {
                     if (haystack.charAt(i + j) != needle.charAt(j)) {
-                        flag = false;
                         break;
                     }
                 }
-                if (flag) {
+                if (j == n2) {
                     return i;
                 }
             }

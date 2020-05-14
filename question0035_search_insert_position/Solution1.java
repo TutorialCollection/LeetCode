@@ -9,15 +9,17 @@ package question0035_search_insert_position;
  */
 public class Solution1 {
     public int searchInsert(int[] nums, int target) {
-        int left = -1, right = nums.length - 1;
-        while (left < right) {
-            int mid = left + ((right - left + 1) >> 1);
-            if (target <= nums[mid]) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (target == nums[mid]) {
                 right = mid - 1;
-            } else {
-                left = mid;
+            } else if (target > nums[mid] ){
+                left = mid + 1;
+            } else if (target < nums[mid]) {
+                right = mid - 1;
             }
         }
-        return left + 1;
+        return left;
     }
 }
